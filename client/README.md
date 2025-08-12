@@ -54,5 +54,7 @@ cd ../client && npm start
 cd ../server && node index.js
 
 Desarrollador: RonyMV07
-Email: (Agregar contacto)
+
+Email: j.melendezveles007@gmail.com
+
 https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
