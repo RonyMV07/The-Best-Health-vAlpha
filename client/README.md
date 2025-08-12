@@ -38,7 +38,7 @@ git clone https://github.com/RonyMV07/The-Best-Health-vAlpha.git
 # Instalar dependencias
 cd The-Best-Health-vAlpha
 npm install
-cd server
+cd client
 npm install
 
 # Variables de entorno (crear .env)
@@ -48,16 +48,10 @@ echo "JWT_SECRET=tusecreto" >> server/.env
 # Iniciar servidores
 npm run dev  
 # Frontend
-cd ../server && npm start  
+cd ../client && npm start  
 
 # Backend
-  gantt
-    title Roadmap v1.0
-    dateFormat  YYYY-MM-DD
-    section Módulos
-    Calendario Corazón       :active, 2023-11-01, 14d
-    Registro Sueño           :2023-11-15, 10d
-    Dashboard Ejercicio      :2023-11-25, 12d
+cd ../server && node index.js
 
 Desarrollador: RonyMV07
 Email: (Agregar contacto)
