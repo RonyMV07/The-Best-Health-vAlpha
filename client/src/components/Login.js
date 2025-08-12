@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; 
 import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
@@ -26,7 +26,6 @@ const Login = () => {
     <div>
       <h1>Iniciar Sesión</h1>
       <form onSubmit={onSubmit}>
-        {/* ... (el resto del formulario es igual) ... */}
         <div>
           <input
             type="email"
@@ -49,6 +48,8 @@ const Login = () => {
         </div>
         <input type="submit" value="Iniciar Sesión" />
       </form>
+      {/* <--- ¡Añadir esta línea! */}
+      <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
     </div>
   );
 };

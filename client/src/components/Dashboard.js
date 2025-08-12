@@ -1,18 +1,12 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import Layout from '../layout/Layout';
 
 const Dashboard = () => {
-const { logout } = useContext(AuthContext);
-
 return (
-    <div>
+    <Layout>
     <h2>Bienvenido al Dashboard de The Best Health</h2>
-    <p>¡Has iniciado sesión con éxito!</p>
-    <button onClick={logout}>Cerrar Sesión</button>
-    <Link to="/">Ir a la página principal</Link>
-    </div>
+    <p>Este es el resumen de tus últimos datos registrados.</p>
+    </Layout>
 );
 };
 
