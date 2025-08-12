@@ -1,6 +1,6 @@
-// client/src/components/Register.js
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,8 @@ const Register = () => {
     email: '',
     password: ''
   });
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { name, email, password } = formData;
 
@@ -15,18 +17,9 @@ const Register = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
-      const body = JSON.stringify({ name, email, password });
-      const res = await axios.post('http://localhost:5000/api/auth/register', body, config);
-      console.log(res.data.token);
-      // TODO: Guardar el token y redirigir
-    } catch (err) {
-      console.error(err.response.data.msg);
+    const success = await register(name, email, password);
+    if (success) {
+      navigate('/dashboard'); // Redirige al dashboard después del registro
     }
   };
 
@@ -34,6 +27,7 @@ const Register = () => {
     <div>
       <h1>Registro</h1>
       <form onSubmit={onSubmit}>
+        {/* ... (el resto del formulario es igual) ... */}
         <div>
           <input
             type="text"

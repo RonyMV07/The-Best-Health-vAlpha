@@ -1,12 +1,14 @@
-// client/src/components/Login.js
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { email, password } = formData;
 
@@ -14,18 +16,9 @@ const Login = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
-      const body = JSON.stringify({ email, password });
-      const res = await axios.post('http://localhost:5000/api/auth/login', body, config);
-      console.log(res.data.token);
-      // TODO: Guardar el token y redirigir
-    } catch (err) {
-      console.error(err.response.data.msg);
+    const success = await login(email, password);
+    if (success) {
+      navigate('/dashboard'); // Redirige al dashboard después de iniciar sesión
     }
   };
 
@@ -33,6 +26,7 @@ const Login = () => {
     <div>
       <h1>Iniciar Sesión</h1>
       <form onSubmit={onSubmit}>
+        {/* ... (el resto del formulario es igual) ... */}
         <div>
           <input
             type="email"
