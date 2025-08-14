@@ -4,6 +4,12 @@ import { AuthContext } from './context/AuthContext';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Heart from './components/Heart';
+import Sleep from './components/Sleep';
+import Exercise from './components/Exercise';
+import Weight from './components/Weight';
+import Medication from './components/Medication';
+import Appointment from './components/Appointment';
 import PrivateRoute from './routing/PrivateRoute';
 import './App.css';
 
@@ -30,7 +36,12 @@ function App() {
         {/* Ruta privada para el dashboard */}
         <Route path="/" element={<PrivateRoute />}>
           <Route path="dashboard" element={<Dashboard />} />
-          {/* Aquí se agregarán las rutas de los 6 módulos */}
+          <Route path="corazon" element={<Heart />} />
+          <Route path="sueno" element={<Sleep />} />
+          <Route path="ejercicio" element={<Exercise />} />
+          <Route path="peso" element={<Weight />} />
+          <Route path="medicacion" element={<Medication />} />
+          <Route path="citas" element={<Appointment />} />
         </Route>
       </Routes>
     </Router>
